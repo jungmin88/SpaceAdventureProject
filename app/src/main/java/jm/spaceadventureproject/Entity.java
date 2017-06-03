@@ -42,6 +42,22 @@ class Entity {
         }
     }
 
+    public void drawTxt(Canvas canvas,
+                        String txtToDisplay,
+                        int txtColor,
+                        int txtSize,
+                        Paint.Align txtAlign
+    ){
+        Paint _paint = new Paint();
+        _paint.setColor(txtColor);
+        _paint.setTextSize(txtSize);
+        _paint.setTextAlign(txtAlign);
+
+        if(canvas != null){
+            canvas.drawText(txtToDisplay, position.x, position.y, _paint);
+        }
+    }
+
     // 이동시킨다
     public void move(Rect rectFrame){
         position.x += speed.x;

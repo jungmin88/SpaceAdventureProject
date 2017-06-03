@@ -8,6 +8,9 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.view.SurfaceHolder;
 
+import static android.R.attr.height;
+import static android.R.attr.width;
+
 /**
  * Created by jm on 2017-06-01.
  */
@@ -30,6 +33,9 @@ class GameThread extends Thread {
     private Rect rectFrame = new Rect();// 바뀔때
 
     private GameTable gameTable = null;
+    private StaticDisplay displayHP;
+    private StaticDisplay displayScore;
+    private int gameScore = 0;
 
     public GameThread(SurfaceHolder surfaceHolder, Resources resources){
         this.surfaceHolder = surfaceHolder;
@@ -46,6 +52,15 @@ class GameThread extends Thread {
 
         background = new Entity(255);
         background.setImage(resources, R.drawable.background1);
+
+        displayHP = new StaticDisplay();
+        displayHP.setPosition(0, );
+
+        displayScore = new StaticDisplay();
+        displayScore.set
+        displayScore.setPosition();
+
+//        displayScore.setStringToDisplay(spaceship.getLife());
     }
 
     // 이미지 배경 투명하게 만들기
@@ -81,6 +96,9 @@ class GameThread extends Thread {
         int heightSpaceship = widthSpaceship*2;
         spaceship.setSize(widthSpaceship, heightSpaceship);
         spaceship.setPosition(width/2, (int)(height*0.8));
+
+        displayHP.setIntToDisplay(spaceship.getLife());
+        displayScore.setIntToDisplay(gameScore);
     }
 
     // 스레드 시작
@@ -127,6 +145,10 @@ class GameThread extends Thread {
             e.printStackTrace();
         }
         semaphore.release();
+
+
+        displayHP.drawTxt(canvas,);
+        displayScore.drawTxt(canvas);
     }
 
     // 게임 진행 시키기
