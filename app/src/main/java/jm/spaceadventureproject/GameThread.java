@@ -30,7 +30,7 @@ class GameThread extends Thread {
     private Rect rectFrame = new Rect();// 바뀔때
 
     private GameTable gameTable = null;
-    private StaticDisplay displayHP;
+    private GameTable displayHP;
     private StaticDisplay displayScore;
     private int gameScore = 0;
 
@@ -50,12 +50,12 @@ class GameThread extends Thread {
         background = new Entity(255);
         background.setImage(resources, R.drawable.background1);
 
-        displayHP = new StaticDisplay();
-        displayHP.setPosition(0, );
+//        displayHP = new StaticDisplay();
+//        displayHP.setPosition(0, );
 
         displayScore = new StaticDisplay();
-        displayScore.set
-        displayScore.setPosition();
+//        displayScore.set
+//        displayScore.setPosition();
 
 //        displayScore.setStringToDisplay(spaceship.getLife());
     }
@@ -94,11 +94,10 @@ class GameThread extends Thread {
         spaceship.setSize(widthSpaceship, heightSpaceship);
         spaceship.setPosition(width/2, (int)(height*0.8));
 
-        gameTable = new GameTable(resources, rectFrame);
         gameTable.setLevel1();
 
-        displayHP.setIntToDisplay(spaceship.getLife());
-        displayScore.setIntToDisplay(gameScore);
+//        displayHP.setIntToDisplay(spaceship.getLife());
+//        displayScore.setIntToDisplay(gameScore);
     }
 
     // 스레드 시작
@@ -140,6 +139,7 @@ class GameThread extends Thread {
         spaceship.draw(canvas);
         gameTable.draw(canvas);
 
+//        displayHP.draw(canvas);
 //        try {
 //            semaphore.acquire();
 //        } catch (InterruptedException e) {
