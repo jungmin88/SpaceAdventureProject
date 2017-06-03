@@ -22,15 +22,17 @@ class GameThread extends Thread {
     private Bitmap bitmap;
 
     private Spaceship spaceship;        // 우주선
-    //    private Entity obstacle1  = null;   // 장애물1
+//    private Entity obstacle1  = null;   // 장애물1
 //    private Entity obstacle2  = null;   // 장애물2
 //    private Entity ufo        = null;   // UFO
     private Entity background = null;   // 배경화면
-    private Meteor meteor;
 
     private Rect rectFrame = new Rect();// 바뀔때
 
     private GameTable gameTable = null;
+    private StaticDisplay displayHP;
+    private StaticDisplay displayScore;
+    private int gameScore = 0;
 
     public GameThread(SurfaceHolder surfaceHolder, Resources resources){
         this.surfaceHolder = surfaceHolder;
@@ -48,8 +50,14 @@ class GameThread extends Thread {
         background = new Entity(255);
         background.setImage(resources, R.drawable.background1);
 
-        meteor = new Meteor(1, resources);
-//        meteor.setImage(resources, R.drawable.meteor);
+        displayHP = new StaticDisplay();
+        displayHP.setPosition(0, );
+
+        displayScore = new StaticDisplay();
+        displayScore.set
+        displayScore.setPosition();
+
+//        displayScore.setStringToDisplay(spaceship.getLife());
     }
 
     // 이미지 배경 투명하게 만들기
@@ -88,6 +96,9 @@ class GameThread extends Thread {
 
         gameTable = new GameTable(resources, rectFrame);
         gameTable.setLevel1();
+
+        displayHP.setIntToDisplay(spaceship.getLife());
+        displayScore.setIntToDisplay(gameScore);
     }
 
     // 스레드 시작
