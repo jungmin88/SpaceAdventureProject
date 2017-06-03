@@ -22,10 +22,11 @@ class GameThread extends Thread {
     private Bitmap bitmap;
 
     private Spaceship spaceship;        // 우주선
-//    private Entity obstacle1  = null;   // 장애물1
+    //    private Entity obstacle1  = null;   // 장애물1
 //    private Entity obstacle2  = null;   // 장애물2
 //    private Entity ufo        = null;   // UFO
     private Entity background = null;   // 배경화면
+    private Meteor meteor;
 
     private Rect rectFrame = new Rect();// 바뀔때
 
@@ -46,6 +47,9 @@ class GameThread extends Thread {
 
         background = new Entity(255);
         background.setImage(resources, R.drawable.background1);
+
+        meteor = new Meteor(1, resources);
+//        meteor.setImage(resources, R.drawable.meteor);
     }
 
     // 이미지 배경 투명하게 만들기
@@ -81,6 +85,9 @@ class GameThread extends Thread {
         int heightSpaceship = widthSpaceship*2;
         spaceship.setSize(widthSpaceship, heightSpaceship);
         spaceship.setPosition(width/2, (int)(height*0.8));
+
+        gameTable = new GameTable(resources, rectFrame);
+        gameTable.setLevel1();
     }
 
     // 스레드 시작
@@ -120,13 +127,14 @@ class GameThread extends Thread {
     private void draw(Canvas canvas){
         background.draw(canvas);
         spaceship.draw(canvas);
+        gameTable.draw(canvas);
 
-        try {
-            semaphore.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        semaphore.release();
+//        try {
+//            semaphore.acquire();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        semaphore.release();
     }
 
     // 게임 진행 시키기
