@@ -10,14 +10,15 @@ import android.graphics.Rect;
 public class Spaceship extends Entity {
 
     private final Resources resources;
+
     private int life = 3;
+
     public Spaceship(int life, Resources resources) {
         super(255);
 
         this.life = life;
         this.resources = resources;
     }
-
     public void move(int x){
         setPosition(x-getSize().x/2, getPosition().y);
     }
@@ -42,5 +43,13 @@ public class Spaceship extends Entity {
 
     public boolean isBroken(){
         return life == 0;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
     }
 }
